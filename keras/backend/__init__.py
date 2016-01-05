@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from __future__ import print_function
 import os
+import sys
 import json
 from .common import epsilon, floatx, set_epsilon, set_floatx
 
@@ -41,10 +42,10 @@ if 'KERAS_BACKEND' in os.environ:
     _BACKEND = _backend
 
 if _BACKEND == 'theano':
-    print('Using Theano backend.')
+    print('Using Theano backend.', file=sys.stderr)
     from .theano_backend import *
 elif _BACKEND == 'tensorflow':
-    print('Using TensorFlow backend.')
+    print('Using TensorFlow backend.', file=sys.stderr)
     from .tensorflow_backend import *
 else:
     raise Exception('Unknown backend: ' + str(_BACKEND))
